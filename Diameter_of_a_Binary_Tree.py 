@@ -1,0 +1,101 @@
+class Node:
+
+    # Constructor to create a new node
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+
+class Solution():
+    def __init__(self):
+        self.a = []
+
+    def diameter(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if root is None:
+            return  0
+        hr = self.height(root.right)
+        hl = self.height(root.left)
+
+        dr = self.diameter(root.right)
+        dl = self.diameter(root.left)
+        print('hr'+ str(hr))
+        print('hl'+ str(hl))
+        print('dl'+ str(dl))
+        print('dr'+ str(dr))
+        print('a'+ str(self.a))
+
+
+        return max(hl + hr, max(dl, dr))
+
+
+
+
+    def height(self,root):
+        if root is None:
+            return 0
+        self.a.append(root.data)
+
+        return 1 + max(self.height(root.left),self.height(root.right))
+
+
+    def printInorder(self,root):
+
+        if root:
+            # First recur on left child
+            self.printInorder(root.left)
+
+            # then print the data of node
+            print(root.data),
+
+            # now recur on right child
+            self.printInorder(root.right)
+
+            # A function to do postorder tree traversal
+
+    def printPostorder(self, root):
+
+        if root:
+            # First recur on left child
+            self.printPostorder(root.left)
+
+            # the recur on right child
+            self.printPostorder(root.right)
+
+            # now print the data of node
+            print(root.data),
+
+            # A function to do preorder tree traversal
+
+    def printPreorder(self,root):
+
+        if root:
+            # First print the data of node
+            print(root.data),
+
+            # Then recur on left child
+            self.printPreorder(root.left)
+
+            # Finally recur on right child
+            self.printPreorder(root.right)
+
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+# print(root.data)
+x = Solution()
+# print(x.diameter(root))
+print("left node right")
+print(x.printInorder(root))
+print("left right node")
+print(x.printPostorder(root))
+print("node left right")
+print(x.printPreorder(root))

@@ -1,0 +1,3 @@
+import os
+entries = os.listdir('/home/prajwol/Downloads/backup/storage/uploads')
+print(str(13) in entries)       
